@@ -25,7 +25,7 @@ namespace EarthVerse.API.Persistence.Contexts
             builder.Entity<Item>().HasKey(i => i.ItemID);
             builder.Entity<Item>().Property(i => i.ItemID).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Item>().Property(i => i.ItemName).IsRequired().HasMaxLength(30);
-            builder.Entity<Item>().HasOne(i => i.Equipment).WithOne(e => e.Item).HasForeignKey<Item>(p => p.ItemID);
+            // builder.Entity<Item>().HasOne(i => i.Equipment).WithOne(e => e.Item).HasForeignKey<Item>(p => p.ItemID);
 
             builder.Entity<Item>().HasData
             (
@@ -40,8 +40,8 @@ namespace EarthVerse.API.Persistence.Contexts
 
             builder.Entity<Equipment>().HasData
             (
-                new Equipment {  EquipmentID = 15, equipmentType = EquipmentType.Overall},
-                new Equipment {  EquipmentID = 16, equipmentType = EquipmentType.Pants}
+                new Equipment {  EquipmentID = 15, ItemID = 101, equipmentType = EquipmentType.Overall},
+                new Equipment {  EquipmentID = 16, ItemID = 102, equipmentType = EquipmentType.Pants}
             );
         }
     }

@@ -17,7 +17,7 @@ namespace EarthVerse.API.Persistence.Repositories
 
         public async Task<IEnumerable<Item>> ListAsync()
         {
-            return await _context.Item.ToListAsync();
+            return await _context.Item.Include(i => i.Equipment).ToListAsync();
         }
     }
 }
